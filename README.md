@@ -1,6 +1,6 @@
 # Counter Styles #
 
-[Demo](https://github.com/MERNCraft/counter-styles)
+[Demo](https://MERNCraft.github.io/counter-styles)
 
 Demo of how the `@counter-style` at-rule can be used to create custom counters or bullet points for lists.
 
