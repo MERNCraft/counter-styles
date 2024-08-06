@@ -1,0 +1,225 @@
+/* Create a variety of custom counter styles */
+
+@counter-style weekdays {
+  system: cyclic;
+  symbols: "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun";
+  suffix: ""
+}
+
+@counter-style smileys {
+  system: cyclic;
+  symbols: "😞" "😒" "😔" "😌" "🙂" "😀" "😃" "😄" "😆" "🙃";
+  suffix: ""
+}
+ 
+@counter-style fruit {
+  system: cyclic;
+  symbols: '🍒' '🍋' '🍊' '🍑' '🍎' '🍉' '🍇' '🍓' '🍈' '🥑' '🍍' '🫑' '🥭' '🥥';
+  suffix: "";
+}
+
+@counter-style types {
+  system: fixed;
+  symbols: "decimal" "upper-alpha" "thai" "weekdays" "fruit" "smileys" "types";
+  suffix: "";
+}
+
+/* Create a metar counter called `type`, whose values are the
+ * names of the different types in a hard-coded order
+ */
+body {
+  min-height: 100vh;
+  color: #ddd;
+  background-color: #222;
+  font-size: 24px;
+
+  counter-set: type 1;
+}
+
+body, main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make the main element the default width of an iframe */
+main {
+  --half: calc((100% - 20px) / 2);
+  position: relative;
+  width: 300px;
+  height: 230px;
+  border: 1px solid #fff;
+  border-radius: 0.25em
+}
+
+/* Show an ol element in the left half and a div on the right */
+ol {
+  height: 100%;
+  width: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: 1px solid white;
+  padding-inline-start: var(--half);
+}
+
+main > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: var(--half);
+}
+label {
+  display: block;
+}
+
+/* Create a space between the interactive labels... */
+.spacer {
+  flex: 1;
+}
+
+/* and the feedback paragraph at the bottom. This paragraph
+ * uses the meta `type` counter to show which type is selected.
+ */
+p {
+  font-size: 0.6em;
+  color: #666;
+  margin: 0;
+}
+p::after {
+  content: "Type: " counter(type, types);
+}
+
+/* Custom CSS properties cannot be used to set list-style-type,
+ * so each checkbox must manually set the list-style-type to
+ * its own particular value.
+ *
+ * The label for each checkbox are collected together in a div
+ * to allow `{ display: flex }` to be used to style them. They
+ * cannot therefore be adjacent to their own checkboxes, so 
+ * the color of each label has to be set manually, too.
+ */
+
+#decimal:checked {
+  counter-set: type 1;
+
+  & ~ div [for=decimal] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: decimal;
+  }
+}
+
+#upper-alpha:checked {
+  counter-set: type 2;
+
+  & ~ div [for=upper-alpha] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: upper-alpha;
+  }
+}
+
+#thai:checked {
+  counter-set: type 3;
+
+  & ~ div [for=thai] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: thai;
+
+    li::marker {
+      color: #c00;
+    }
+  }
+}
+
+#weekdays:checked {
+  counter-set: type 4;
+
+  & ~ div [for=weekdays] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: weekdays;
+
+    li:nth-child(7n + 6)::marker,
+    li:nth-child(7n)::marker {
+      color: gold;
+    }
+  }
+}
+
+#fruit:checked {
+  counter-set: type 5;
+
+  & ~ div [for=fruit] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: fruit;
+  }
+}
+
+#smileys:checked {
+  counter-set: type 6;
+
+  & ~ div [for=smileys] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: smileys;
+  }
+}
+
+#types:checked {
+  counter-set: type 7;
+
+  & ~ div [for=types] {
+    color: #c00;
+  }
+
+  & ~ ol {
+    list-style-type: types;
+
+    & li:nth-child(n+8)::marker {
+      color: #666
+    }
+  }
+}
+
+/* Hide all the inputs by moving them off-screen */
+input {
+  position: absolute;
+  left: -999vw;
+}
+
+
+/* Show the GitHub logo */
+a {
+  width: 0;
+  height: 0;
+
+  img {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 32px;
+    height: 32px;
+    filter: grayscale(1);
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
