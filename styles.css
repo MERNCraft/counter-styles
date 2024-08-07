@@ -1,5 +1,17 @@
 /* Create a variety of custom counter styles */
 
+/* Built-in style for Thai numeric: Unicode symbols */
+/* @counter-style thai {
+  system: numeric;
+  symbols: '\E50' '\E51' '\E52' '\E53' '\E54' '\E55' '\E56' '\E57' '\E58' '\E59';
+} */
+
+/* Thai numeric using the actual characters */
+/* @counter-style thai {
+  system: numeric;
+  symbols: '๐' '๑' '๒' '๓' '๔' '๕' '๖' '๗' '๘' '๙';
+} */
+
 @counter-style weekdays {
   system: cyclic;
   symbols: "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun";
@@ -11,7 +23,7 @@
   symbols: "😞" "😒" "😔" "😌" "🙂" "😀" "😃" "😄" "😆" "🙃";
   suffix: ""
 }
- 
+
 @counter-style fruit {
   system: cyclic;
   symbols: '🍒' '🍋' '🍊' '🍑' '🍎' '🍉' '🍇' '🍓' '🍈' '🥑' '🍍' '🫑' '🥭' '🥥';
@@ -96,7 +108,7 @@ p::after {
  *
  * The label for each checkbox are collected together in a div
  * to allow `{ display: flex }` to be used to style them. They
- * cannot therefore be adjacent to their own checkboxes, so 
+ * cannot therefore be adjacent to their own checkboxes, so
  * the color of each label has to be set manually, too.
  */
 
