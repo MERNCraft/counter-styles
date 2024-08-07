@@ -19,13 +19,13 @@
 @counter-style weekdays {
   system: cyclic;
   symbols: "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun";
-  suffix: ""
+  suffix: "";
 }
 
 @counter-style smileys {
   system: cyclic;
   symbols: "😞" "😒" "😔" "😌" "🙂" "😀" "😃" "😄" "😆" "🙃";
-  suffix: ""
+  suffix: "";
 }
 
 @counter-style fruit {
@@ -169,6 +169,11 @@ p::after {
     li:nth-child(7n + 6)::marker,
     li:nth-child(7n)::marker {
       color: gold;
+    }
+
+    li:nth-child(7n + 6):hover::marker,
+    li:nth-child(7n):hover::marker {
+      content: "Weekend!";
     }
   }
 }
