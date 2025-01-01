@@ -44,6 +44,7 @@
  * names of the different types in a hard-coded order
  */
 body {
+  margin: 0;
   min-height: 100vh;
   color: #ddd;
   background-color: #222;
